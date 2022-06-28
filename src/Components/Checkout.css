@@ -1,3 +1,18 @@
 .Checkout {
-    text-align: center;
+    padding-left: 1pc;
+    text-align: left;
+}
+
+h1{
+    padding-left: 1pc;
+}
+
+h2{
+    padding-left: 1pc;
+    
+}
+
+h4{
+    padding-left: 1pc;
+    color: teal;
 }

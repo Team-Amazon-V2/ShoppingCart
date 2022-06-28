@@ -1,10 +1,12 @@
 import React from 'react';
 import './ShoppingCart.css';
 
-function ShoppingCart() {
-    function handleCheckout(e){
-      e.preventDefault();
-      console.log('You cliked something')
+function ShoppingCart(props) {
+    function handleCheckout(){
+      console.log('You clicked something')
+      props.setCheckout(true)
+      props.setContent(props.getItem)
+      // console.log(props.setContent[0])
     }
 
     return (
@@ -25,7 +27,8 @@ function ShoppingCart() {
           <option value="QTY 3">QTY: 3</option>
         </select><br></br>
         <button className="AddToCart">Add to Cart</button><br></br>
-        <button onClick={handleCheckout} className="BuyNow">Buy Now</button><br></br>
+        {/* <button onClick={() => props.setCheckout(true)} className="BuyNow">Buy Now</button><br></br> */}
+        <button onClick={() => handleCheckout()} className="BuyNow">Buy Now</button><br></br>
         Secure transaction<br></br>
          <br></br>
          Ships from Amazon.com<br></br>
