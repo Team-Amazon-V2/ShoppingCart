@@ -7,10 +7,11 @@ function App() {
 
   return (
     <div>
-    {/* <ShoppingCart /> */}
-     { function check(shoppingCart) {if(shoppingCart){return  <ShoppingCart />} else{return <Checkout />}}
+    <ShoppingCart />    
     </div>
   );
 }
 
 export default App;
+
+// test test test
