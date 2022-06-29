@@ -22,4 +22,24 @@ function App() {
               />}
 }
 
+// API CONNECTION
+
+const postText = async (payload) => {
+  if (payload.length !== 0){
+    const rawResponse = await fetch('/api/amazon/post', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+    const content = await rawResponse.json();
+  
+    console.log(content);}
+    else {
+      alert('Nothing submitted');
+    }
+  };
+
 export default App;
