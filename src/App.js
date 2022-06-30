@@ -9,6 +9,7 @@ function App() {
   const item = "iPad"
   const [cartQTY, setQTY] = useState(0);
 
+
   if (checkout){
     return <Checkout 
               setCheckout={setCheckout}
@@ -21,25 +22,19 @@ function App() {
               getItem={item}
               />}
 }
+// componentDidMount(){
+//   fetch('/api/cart')
+//  //  ,{
+//  //   method: 'GET',
+//  //   headers: {
+//  //     'Accept': 'application/json',
+//  //     'Content-Type': 'application/json'
+//  //  },
+//  //   body: JSON.stringify(payload)
+//  // })
+//  .then((res) => res.json)
+//  .then(console.log(res.json));
+// }
 
-// API CONNECTION
-
-const postText = async (payload) => {
-  if (payload.length !== 0){
-    const rawResponse = await fetch('/api/amazon/post', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    });
-    const content = await rawResponse.json();
-  
-    console.log(content);}
-    else {
-      alert('Nothing submitted');
-    }
-  };
 
 export default App;

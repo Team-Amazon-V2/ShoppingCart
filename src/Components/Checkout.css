@@ -7,6 +7,25 @@ h1{
     padding-left: 1pc;
 }
 
+.container {
+    display: flex;
+    flex-direction: row; 
+    justify-content:left;
+  }
+
+  .cont2 {
+    display: inline-block;
+    flex-direction: row; 
+    justify-content: start;
+    padding-top: 20%;
+    padding-left: 5%;
+  }
+
+.listItem{
+    text-align: center;
+    padding: 70px 0
+}
+
 h2{
     padding-left: 1pc;
     
