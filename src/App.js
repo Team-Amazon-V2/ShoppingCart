@@ -6,7 +6,8 @@ import Checkout from './Components/Checkout';
 function App() {
   const [checkout, setCheckout] = useState(false);
   const [cartContent, setContent] = useState([]);
-  const item = "iPad"
+  const item = {id: 1} 
+  //const [item] = useState([id: 1])
   const [cartQTY, setQTY] = useState(0);
 
 
@@ -14,7 +15,7 @@ function App() {
     return <Checkout 
               setCheckout={setCheckout}
               cartContent={cartContent}
-              // getItem={getItem}
+              
               />
   } else { return <ShoppingCart 
               setCheckout={setCheckout} 

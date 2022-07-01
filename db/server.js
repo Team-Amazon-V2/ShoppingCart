@@ -3,26 +3,39 @@ const express = require("express");
 const db = require("./conn");
 const app = express();
 app.use(express.json());
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
+const cors = require('cors');
+app.use(cors());
 
 // app.use(express.static("public"));
 
-app.post("/api/cart/post", async (req , res) => {
-  try {
-    const data = await db.query('INSERT INTO cart (id, item, price) VALUES ($1, $2, $3) RETURNING *;', [req.body.id, req.body.name, req.body.email])
-    res.json(data.rows);
-    //console.log(data.rows)
-  } catch (error) {
-    // res.send("some error")
-    console.log(error)
-  }
+// app.post("/api/cart/post", async (req , res) => {
+//   try {
+//     const data = await db.query('INSERT INTO cart (id, item, price) VALUES ($1, $2, $3) RETURNING *;', [req.body.id, req.body.name, req.body.email])
+//     res.json(data.rows);
+//     //console.log(data.rows)
+//   } catch (error) {
+//     // res.send("some error")
+//     console.log(error)
+//   }
   
+// });
+
+app.get("/api/cart", async (req , res) => {
+  try {
+    const data = await db.query('SELECT * FROM cart')
+    res.json(data.rows);
+    client.release()
+  } catch (error) {
+    res.send(error.message)
+  }
 });
 
-app.get("/api/cart", async (_ , res) => {
+app.get("/api/cart/:id", async (req , res) => {
   try {
-    const data = await db.query("SELECT * FROM cart")
+    const data = await db.query('SELECT * FROM cart WHERE id=$1;', [req.params.id])
     res.json(data.rows);
+    client.release()
   } catch (error) {
     res.send(error.message)
   }
@@ -52,5 +65,5 @@ app.delete('/api/cart/:id', async (req, res) => {
 })
 
 app.listen(PORT, () => { 
-  console.log(`listening on Port ${3000}`);
+  console.log(`listening on Port ${3001}`);
 });

@@ -2,12 +2,25 @@ import React from 'react';
 import './ShoppingCart.css';
 
 function ShoppingCart(props) {
+
     function handleCheckout(){
-      console.log('You clicked something')
       props.setCheckout(true)
-      props.setContent(props.getItem)
-      // console.log(props.setContent[0])
-    }
+      console.log('You clicked something')
+      let id= 1
+      fetch(`http://localhost:3001/api/cart/${id}`)
+      // , {
+          // headers : { 
+          //     'Content-Type': 'application/json',
+          //     'Accept': 'application/json',
+          //   }})
+          .then ((res) => res.json())
+          .then ((data) => {
+            //props.setCheckout(true)
+            //props.setContent(props.getItem)
+            props.setContent(data)
+            console.log(data)
+          })
+        }
 
     return (
       <div className="ShoppingCart">
