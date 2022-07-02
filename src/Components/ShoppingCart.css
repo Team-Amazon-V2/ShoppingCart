@@ -43,6 +43,7 @@
 }
 
 .BuyNow {
+text-decoration: none;
 align-items: center;
 background-color: rgb(255, 213, 0);
 border: 100;

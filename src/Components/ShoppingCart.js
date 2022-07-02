@@ -1,26 +1,26 @@
 import React from 'react';
 import './ShoppingCart.css';
+import { Link } from "react-router-dom";
 
 function ShoppingCart(props) {
 
     function handleCheckout(){
-      props.setCheckout(true)
       console.log('You clicked something')
-      let id= 1
-      fetch(`http://localhost:3001/api/cart/${id}`)
-      // , {
-          // headers : { 
-          //     'Content-Type': 'application/json',
-          //     'Accept': 'application/json',
-          //   }})
-          .then ((res) => res.json())
-          .then ((data) => {
-            //props.setCheckout(true)
-            //props.setContent(props.getItem)
-            props.setContent(data)
-            console.log(data)
-          })
+      // fetch(`http://localhost:3001/api/cart/${id}`)
+      //     .then ((res) => res.json())
+      //     .then ((data) => {
+      //       props.setContent(data)
+      //       console.log(data)
+      //     })
         }
+      // let item = props.item
+      // console.log(item)
+      function addToCart() {
+        let item = props.item
+        console.log(item)
+        // props.setContent(props.item)
+        // console.log(props.item.id)
+      }
 
     return (
       <div className="ShoppingCart">
@@ -39,9 +39,10 @@ function ShoppingCart(props) {
           <option value="QTY 2">QTY: 2</option>
           <option value="QTY 3">QTY: 3</option>
         </select><br></br>
-        <button className="AddToCart">Add to Cart</button><br></br>
+        <button className="AddToCart" onClick={addToCart}>Add to Cart</button><br></br>
         {/* <button onClick={() => props.setCheckout(true)} className="BuyNow">Buy Now</button><br></br> */}
-        <button onClick={() => handleCheckout()} className="BuyNow">Buy Now</button><br></br>
+        <Link to='/checkout'><button className="BuyNow">Checkout</button><br></br></Link>
+        {/* <button className="BuyNow">Buy Now</button><br></br> */}
         Secure transaction<br></br>
          <br></br>
          Ships from Amazon.com<br></br>

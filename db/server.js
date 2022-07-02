@@ -24,6 +24,7 @@ app.use(cors());
 app.get("/api/cart", async (req , res) => {
   try {
     const data = await db.query('SELECT * FROM cart')
+    let client = await db.connect();
     res.json(data.rows);
     client.release()
   } catch (error) {
@@ -33,8 +34,10 @@ app.get("/api/cart", async (req , res) => {
 
 app.get("/api/cart/:id", async (req , res) => {
   try {
-    const data = await db.query('SELECT * FROM cart WHERE id=$1;', [req.params.id])
+    let client = await db.connect();
+    const data = await db.query(`SELECT * FROM cart WHERE id=${req.params.id};`)
     res.json(data.rows);
+    console.log(data.rows);
     client.release()
   } catch (error) {
     res.send(error.message)
